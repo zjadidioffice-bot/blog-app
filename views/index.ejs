@@ -1,19 +1,8 @@
+<link rel="stylesheet" href="css/post.css">
+
 <html lang="en">
 
 <head>
-    <style>
-        body {
-            font-family: Arial;
-            width: 900px;
-            margin: auto;
-        }
-
-        .post {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 20px 0;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Posts</title>
@@ -21,16 +10,17 @@
 
 <body>
     <h1>blog Posts</h1>
-    <a href="/posts/create">
+    <a href="/posts/create" class="btn">
         create a new post
     </a>
-    <form action="/" method="get">
+    <form action="/" method="get" class="search-form">
         <input type="text" name="search" value="<%= search||'' %>" placeholder="search posts">
         <button type="submit">search</button>
     </form>
     <% if(posts.length===0){ %>
         <p>no posts yet</p>
         <% } %>
+        <div class="posts">
             <% posts.forEach(post=> {%>
                 <div class="post">
                     <h2>
@@ -40,9 +30,7 @@
                     </h2>
                     <% if(post.image){ %>
                         <img
-                        src="/uploads/<%= post.image %>"
-                        width="200"
-                        >
+                        src="/uploads/<%= post.image %>">
                         <% } %>
                     <p>
                         <%= post.body %>
@@ -63,8 +51,9 @@
                     </small>
                 </div>
                 <% }); %>
+        </div>
 
-                    <div>
+                    <div class="pagination">
 
                         <% if(page> 1){ %>
 

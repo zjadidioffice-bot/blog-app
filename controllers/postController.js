@@ -5,7 +5,7 @@ const Category=require("../models/Category")
 const { validationResult, body } = require("express-validator");
 const getAllPosts = async (req, res) => {
     try {
-        const limit=1;
+        const limit=2;
         const page=Number(req.query.page)||1
         const skip=(page-1)*limit;
 
