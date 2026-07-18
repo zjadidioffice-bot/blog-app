@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit category</title>
+</head>
+<body>
+    <h2>edit category</h2>
+    <form action="/categories/<%= category._id %>" method="post" >
+     <input type="text" name="name" value="<%= category.name %>">
+     <button type="submit">save edit</button>   
+    </form>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= post.title %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= post.title %>
+    </h1>
+    <br>
+    <% if(post.image){ %>
+        <img
+        src="/uploads/<%= post.image %>"
+        width="300"
+        alt="<%= post.title %>"
+        >
+        <% } %>
+    <br>
+    <p>category:<%= post.category.name %></p>
+    <br>
+    <p>
+        <%= post.body %>
+    </p>
+    <br>
+    <hr>
+    <p>
+        created at:
+        <%= post.createdAt.toDateString() %>
+    </p>
+    <a href="/posts/<%= post._id %>/edit">edit post</a>
+    |
+    <form action="/posts/<%= post._id %>/delete" method="post">
+        <button type="submit">
+            delete
+        </button>
+    </form>
+    <a href="/">back</a>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="blog.css">
+
+<div class="single-post">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">home</a>
+            <span>/</span>
+            <a href="#">Backend</a>
+        </div>
+        <div class="post-header">
+            <span class="category-badge">Backend</span>
+            <h1>
+            <%= post.title %>
+
+            </h1>
+            <div class="post-meta">
+                <span>👤 Zahra</span>
+
+                <span>📅
+        <%= post.createdAt.toDateString() %></span>
+
+                <span>⏱ 8 min read</span>                
+            </div>
+        </div>
+        <div class="hero-image">
+                <% if(post.image){ %>
+        <img
+        src="/uploads/<%= post.image %>"
+        width="300"
+        alt="<%= post.title %>"
+        >
+        <% } %>
+            <!-- <img src="post1.png" alt="post image"> -->
+        </div>
+        <article class="article-content">
+        <%= post.body %>
+
+    <!-- <p>
+        Node.js is one of the most popular technologies for backend development.
+        In this tutorial we will build a complete blog step by step using
+        Express, MongoDB and EJS.
+    </p>
+
+    <h2>Why Node.js?</h2>
+
+    <p>
+        Node.js allows JavaScript to run on the server.
+        It is fast, scalable and has a huge ecosystem.
+    </p>
+
+    <h2>Features</h2>
+
+    <ul>
+
+        <li>Fast Performance</li>
+
+        <li>Huge Community</li>
+
+        <li>Express Framework</li>
+
+        <li>MongoDB Integration</li>
+
+    </ul> -->
+
+</article>
+    </div>
+</div>

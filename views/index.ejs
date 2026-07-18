@@ -1,0 +1,108 @@
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            font-family: Arial;
+            width: 900px;
+            margin: auto;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+</head>
+
+<body>
+    <h1>blog Posts</h1>
+    <a href="/posts/create">
+        create a new post
+    </a>
+    <form action="/" method="get">
+        <input type="text" name="search" value="<%= search||'' %>" placeholder="search posts">
+        <button type="submit">search</button>
+    </form>
+    <% if(posts.length===0){ %>
+        <p>no posts yet</p>
+        <% } %>
+            <% posts.forEach(post=> {%>
+                <div class="post">
+                    <h2>
+                        <a href="/posts/<%= post._id %>">
+                            <%= post.title %>
+                        </a>
+                    </h2>
+                    <% if(post.image){ %>
+                        <img
+                        src="/uploads/<%= post.image %>"
+                        width="200"
+                        >
+                        <% } %>
+                    <p>
+                        <%= post.body %>
+                    </p>
+                    <p>
+                        category:
+                        <% if(post.category){ %>
+                            <a href="/categories/<%= post.category._id %>/posts">
+                                <%= post.category.name %>
+
+                            </a>
+                            <% }else{ %>
+                                -
+                                <% } %>
+                    </p>
+                    <small>
+                        <%= post.createdAt.toDateString() %>
+                    </small>
+                </div>
+                <% }); %>
+
+                    <div>
+
+                        <% if(page> 1){ %>
+
+                            <a href="/?search=<%= search %>&page=<%= page-1 %>">
+                                Previous
+                            </a>
+
+                            <% } %>
+
+                                <% for(let i=1;i<=totalPages;i++){ %>
+
+                                    <% if(i===page){ %>
+
+                                        <strong>
+                                            <%= i %>
+                                        </strong>
+
+                                        <% }else{ %>
+
+                                            <a href="/?search=<%= search %>&page=<%= i %>">
+
+                                                <%= i %>
+
+                                            </a>
+
+                                            <% } %>
+
+                                                <% } %>
+
+                                                    <% if(page<totalPages){ %>
+
+                                                        <a href="/?search=<%= search %>&page=<%= page+1 %>">
+                                                            Next
+                                                        </a>
+
+                                                        <% } %>
+
+                    </div>
+</body>
+
+</html>

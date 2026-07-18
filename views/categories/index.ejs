@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>categories</title>
+</head>
+<body>
+    <h2>categories</h2>
+    <a href="/categories/create">add category</a>
+<hr>
+<% if(categories.length===0) {%>
+    <p>no categories found</p>
+    <% }else{ %>
+<% categories.forEach(category=>{ %>
+<p><%= category.name %></p>
+<a href="categories/<%= category._id %>/edit">edit</a>
+<form action="categories/<%= category._id %>/delete" method="post">
+    <button type="submit">delete</button>
+    
+</form>
+<% })} %>
+</body>
+</html>

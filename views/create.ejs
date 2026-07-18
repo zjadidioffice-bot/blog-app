@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create post</title>
+</head>
+
+<body>
+    <h1>create a new post</h1>
+    <form action="/posts" method="post" enctype="multipart/form-data">
+        <div>
+            <label>title</label>
+            <br>
+            <input type="text" name="title" value="<%= oldData?.title || '' %>" required>
+            <% const titleError=errors.find(error=>error.path==="title"); %>
+                <% if(titleError) {%>
+                    <p>
+                        <%= titleError.msg %>
+                    </p>
+                    <% } %>
+                        <label>body</label>
+                        <br>
+                        <textarea type="text" name="body" required>
+                <%= oldData?.body ||'' %>
+            </textarea>
+                        <% const bodyError=errors.find(error=>error.path==="body"); %>
+                            <% if(bodyError) {%>
+                                <p>
+                                    <%= bodyError.msg %>
+                                </p>
+                                <% } %>
+                                    <input type="file" name="image">
+                                    <select name="category">
+                                        <% categories.forEach(category=>{ %>
+                                            <option value="<%= category._id %>">
+                                                <%= category.name %>
+                                                    <% }) %>
+                                            </option>
+                                    </select>
+        </div>
+        <button type="submit">save</button>
+    </form>
+    <br>
+    <a href="/">back</a>
+</body>
+
+</html>
