@@ -31,7 +31,7 @@
 
         <option
             value="<%= category._id %>"
-            <%= post.category.toString() === category._id.toString() ? "selected" : "" %>
+            <%= post.category?.toString() === category._id.toString() ? "selected" : "" %>
         >
             <%= category.name %>
         </option>

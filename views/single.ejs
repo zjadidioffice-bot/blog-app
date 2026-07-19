@@ -22,7 +22,10 @@
             <img src="/uploads/<%= post.image %>" width="300" alt="<%= post.title %>">
             <% } %>
                 <br>
-                <p>category:<%= post.category.name %>
+                <p class="category">category:
+                    <span>
+                    <%= post.category?.name %>
+                    </span>
                 </p>
                 <br>
                 <p>
@@ -34,13 +37,16 @@
                     created at:
                     <%= post.createdAt.toDateString() %>
                 </p>
-                <a href="/posts/<%= post._id %>/edit">edit post</a>
+                <div class="actions">
+<a href="/posts/<%= post._id %>/edit">edit post</a>
                 |
                 <form action="/posts/<%= post._id %>/delete" method="post">
                     <button type="submit">
                         delete
                     </button>
                 </form>
+                </div>
+                
                 <a href="/">back</a>
     </div>
 

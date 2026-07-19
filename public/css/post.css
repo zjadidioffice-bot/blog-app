@@ -134,3 +134,37 @@ h1{
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
 }
+.category{
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.category span{
+    background:#198754;
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+}
+.single-post hr{
+    border:none;
+    border-top:1px solid #ddd;
+    margin:30px 0;
+}
+.actions form{
+    display:inline;
+}
+.single-post{
+    animation:fade .5s;
+}
+@keyframes fade{
+
+from{
+    opacity:0;
+    transform:translateY(20px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
