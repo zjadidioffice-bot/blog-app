@@ -1,6 +1,8 @@
 <html lang="en">
 
 <head>
+        <link rel="stylesheet" href="/css/post.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create post</title>
@@ -8,38 +10,52 @@
 
 <body>
     <h1>create a new post</h1>
-    <form action="/posts" method="post" enctype="multipart/form-data">
+    <form action="/posts" method="post" enctype="multipart/form-data" class="form-container">
         <div>
-            <label>title</label>
+            <div class="form-group">
+                <label>title</label>
+                <input type="text" name="title" value="<%= oldData?.title || '' %>" required>
+            </div>
             <br>
-            <input type="text" name="title" value="<%= oldData?.title || '' %>" required>
             <% const titleError=errors.find(error=>error.path==="title"); %>
                 <% if(titleError) {%>
                     <p>
                         <%= titleError.msg %>
                     </p>
                     <% } %>
-                        <label>body</label>
-                        <br>
-                        <textarea type="text" name="body" required>
-                <%= oldData?.body ||'' %>
-            </textarea>
+                        <div class="form-group">
+                            <label>body</label>
+                            <br>
+                            <textarea name="body" required>
+                            <%= oldData?.body ||'' %>
+                            </textarea>
+                        </div>
                         <% const bodyError=errors.find(error=>error.path==="body"); %>
                             <% if(bodyError) {%>
                                 <p>
                                     <%= bodyError.msg %>
                                 </p>
                                 <% } %>
-                                    <input type="file" name="image">
-                                    <select name="category">
-                                        <% categories.forEach(category=>{ %>
-                                            <option value="<%= category._id %>">
-                                                <%= category.name %>
-                                                    <% }) %>
-                                            </option>
-                                    </select>
+                                    <div class="form-group">
+                                        <label>image</label>
+                                        <input type="file" name="image" class="file-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>category</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <select name="category">
+                                            <% categories.forEach(category=>{ %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+
+
         </div>
-        <button type="submit">save</button>
+        <button type="submit" class="submit-btn">save</button>
     </form>
     <br>
     <a href="/">back</a>

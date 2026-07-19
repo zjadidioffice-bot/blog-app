@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -19,35 +18,35 @@
         </h1>
         <br>
         <% if(post.image){ %>
-            <img src="/uploads/<%= post.image %>" width="300" alt="<%= post.title %>">
+            <img src="/uploads/<%= post.image %>" width="300" alt="<%= post.title %>" class="post-image">
             <% } %>
                 <br>
                 <p class="category">category:
                     <span>
-                    <%= post.category?.name %>
+                        <%= post.category?.name %>
                     </span>
                 </p>
                 <br>
-                <p>
+                <p class="post-body">
                     <%= post.body %>
                 </p>
-                <br>
-                <hr>
                 <p>
                     created at:
                     <%= post.createdAt.toDateString() %>
                 </p>
                 <div class="actions">
-<a href="/posts/<%= post._id %>/edit">edit post</a>
-                |
-                <form action="/posts/<%= post._id %>/delete" method="post">
-                    <button type="submit">
-                        delete
-                    </button>
-                </form>
+                    <a href="/posts/<%= post._id %>/edit" class="btn1 edit-btn">edit post</a>
+                    
+                    <form action="/posts/<%= post._id %>/delete" method="post" class="delete-form">
+                        <button type="submit" class="btn1 delete-btn">
+                            delete
+                        </button>
+                    </form>
+                    
+                    <a href="/" class="btn1 back-btn">back</a>
+
                 </div>
-                
-                <a href="/">back</a>
+
     </div>
 
 </body>
