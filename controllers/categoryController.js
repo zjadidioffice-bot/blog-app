@@ -7,7 +7,7 @@ const index=async(req,res)=>{
     });
 };
 const showCreateForm=(req,res)=>{
-    res.render("categories/create");
+    res.render("admin/categories/create");
 }
 
 const createCategory=async(req,res)=>{

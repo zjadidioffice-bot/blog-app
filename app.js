@@ -8,11 +8,13 @@ const userRouter=require("./routes/userRouter");
 const categoryRouter=require("./routes/categoryRoutes")
 const adminRoutes = require("./routes/admin");
 const session = require("express-session");
+const expressLayouts = require("express-ejs-layouts");
 const app=express();
 
 connectDB();
 
 app.set("view engine","ejs");
+app.use(expressLayouts);
 app.set("views",path.join(__dirname,"views"));
 app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
