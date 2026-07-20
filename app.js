@@ -6,6 +6,7 @@ const connectDB=require("./config/db");
 const postRouter=require("./routes/postRoutes");
 const userRouter=require("./routes/userRouter");
 const categoryRouter=require("./routes/categoryRoutes")
+const adminRoutes = require("./routes/admin");
 const session = require("express-session");
 const app=express();
 
@@ -21,6 +22,7 @@ app.use(session({
     resave:false,
     saveUninitialized:false
 }));
+app.use("/admin", adminRoutes);
 app.use(userRouter)
 app.use(postRouter);
 app.use(categoryRouter);

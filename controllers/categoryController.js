@@ -2,7 +2,7 @@ const Category = require("../models/Category");
 
 const index=async(req,res)=>{
     const categories=await Category.find();
-    res.render("categories/index",{
+    res.render("admin/categories/index",{
         categories
     });
 };
@@ -15,12 +15,12 @@ const {name}=req.body;
 await Category.create({
     name
 });
-res.redirect("/categories");
+res.redirect("admin/categories");
 }
 
 const showEditForm=async(req,res)=>{
 const category=await Category.findById(req.params.id);
-res.render("categories/edit",{category});
+res.render("admin/categories/edit",{category});
 };
 
 const editCategory=async(req,res)=>{
