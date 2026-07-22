@@ -30,46 +30,12 @@ const getAllPosts = async (req, res) => {
             .skip(skip)
             .limit(limit);
 
-        res.render("admin/posts/index", { posts, search, page, totalPages });
+        res.render("admin/posts/index", { posts, search, page, totalPages,    layout: "layouts/admin"
+ });
     } catch (error) {
         console.log(error);
         res.status(500).send("server error");
     }
-
-    // try {
-    //     const limit=3;
-    //     const page=Number(req.query.page)||1;
-    //     const skip=(page-1)*limit
-    //     const totalPosts=await Post.countDocuments();
-
-    //     const {search}=req.query;
-    //     let posts;
-    //     if(search){
-    //         posts=await Post.find({
-    //             $or:[
-    //                 {title:{$regex:search,$options:"i"}},
-    //                 {body:{$regex:search,$options:"i"}}
-    //             ]
-    //         }).populate("category")
-    //         .sort({createdAt:-1})
-    //         .skip(skip)
-    //         .limit(limit);
-    //                 res.render("index", { posts,search });
-
-    //     }
-    //     else{
-    //    const posts=await Post.find().populate("category")
-    //    .sort({createdAt:-1})
-    //    .skip(skip)
-    //    .limit(limit);
-    //     //const posts = await Post.find().sort({ createdAt: -1 });
-    //     res.render("index", { posts,search });
-    //     }
-
-    // } catch (error) {
-    //     console.log(error);
-    //     res.status(500).send("server error");
-    // }
 }
 
 const showCreateForm = async (req, res) => {

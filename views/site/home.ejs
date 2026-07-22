@@ -1,0 +1,77 @@
+<section class="hero">
+
+    <div class="container">
+
+        <h1>به وبلاگ آموزشی خوش آمدید</h1>
+
+        <p>
+            آموزش برنامه نویسی، طراحی وب و هوش مصنوعی به زبان ساده
+        </p>
+
+        <a href="/blog" class="hero-btn">
+            مشاهده مقالات
+        </a>
+
+    </div>
+
+</section>
+<section class="latest-post">
+    <div class="container">
+        <h2 class="section-title">
+            آخرین مقالات
+        </h2>
+        <div class="post-grid">
+            <% latestPosts.forEach(post => {%>
+                            <article class="post-card">
+                <img src="uploads/<%= post.image %>" alt="">
+                <div class="post-content">
+                    <h3><%= post.title %></h3>
+                    <p><%= post.body.substring(0,120)%>...</p>
+                    <a href="/posts/<%= post._id %>">ادامه مطلب</a>
+                </div>
+            </article>
+          <%  }); %>
+
+        </div>
+    </div>
+</section>
+<section class="categories">
+    <div class="container">
+        <h2 class="section-title">دسته بندی ها</h2>
+        <div class="categories-grid">
+            <% categories.forEach(category=>{ %>
+                            <a href="/categories/<%= category._id %>" class="category-card"><%= category.name %></a>
+
+         <%   }) %>
+        </div>
+    </div>
+</section>
+<section class="about-site">
+
+    <div class="container about-wrapper">
+
+        <div class="about-text">
+
+            <h2>درباره وبلاگ</h2>
+
+            <p>
+                هدف این وبلاگ آموزش برنامه‌نویسی و طراحی وب به زبان ساده است.
+                تلاش می‌کنیم مطالب کاربردی، پروژه‌محور و قابل فهم برای همه علاقه‌مندان
+                منتشر کنیم تا بتوانند مسیر یادگیری خود را با اطمینان ادامه دهند.
+            </p>
+
+            <a href="/about" class="about-btn">
+                بیشتر بخوانید
+            </a>
+
+        </div>
+
+        <div class="about-image">
+
+            <img src="/uploads/post.png" alt="درباره وبلاگ">
+
+        </div>
+
+    </div>
+
+</section>

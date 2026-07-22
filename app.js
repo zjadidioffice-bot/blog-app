@@ -9,6 +9,7 @@ const categoryRouter=require("./routes/categoryRoutes")
 const adminRoutes = require("./routes/admin");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
+const siteRoutes = require("./routes/site");
 const app=express();
 
 connectDB();
@@ -28,6 +29,7 @@ app.use("/admin", adminRoutes);
 app.use(userRouter)
 app.use(postRouter);
 app.use(categoryRouter);
+app.use("/", siteRoutes);
 
 
 const PORT=process.env.PORT || 3000;
