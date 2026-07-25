@@ -1,8 +1,8 @@
 const express=require("express");
 const router=express.Router();
 const isAuthenticated=require("../middlewares/isAuth");
-const controller=require("../controllers/categoryController");
-const postController=require("../controllers/postController");
+const controller=require("../controllers/admin/categoryController");
+const postController=require("../controllers/admin/postController");
 console.log(controller.deleteCategory);
 console.log(typeof controller.deleteCategory);
 router.get("/categories",isAuthenticated,controller.index)

@@ -1,8 +1,8 @@
-const Category = require("../models/Category");
+const Category = require("../../models/Category");
 
 const index=async(req,res)=>{
     const categories=await Category.find();
-    res.render("admin/categories/index",{
+    res.render("site/categories/index",{
         categories
     });
 };

@@ -1,0 +1,22 @@
+<section class="single-post">
+    <div class="container">
+        <div class="single-image">
+            <img src="/uploads/<%= post.image %>" alt="<%= post.title %>">
+        </div>
+        <div class="single-content">
+            <h1><%= post.title %></h1>
+            <div class="single-meta">
+                <span>
+                    دسته بندی:
+                    <%= post.category?.name %>
+                </span>
+                <span>
+                    <%= post.createdAt.toLocaleDateString("fa-IR") %>
+                </span>
+                <div class="single-body">
+                    <%= post.body %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

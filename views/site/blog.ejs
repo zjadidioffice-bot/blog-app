@@ -1,0 +1,61 @@
+<section class="blog-app">
+    <div class="container">
+        <h1>وبلاگ آموزشی</h1>
+        <p class="blog-description">
+            آخرین مقالات آموزش برنامه نویسی،
+        </p>
+        <div class="blog-posts">
+            <% posts.forEach(post=>{ %>
+                <div class="post-card">
+                    <img src="/uploads/<%= post.image %>" alt="<%= post.title %>">
+                    <div class="post-content">
+                        <h2><%= post.title %></h2>
+                        <p><%= post.body.substring(0,150) %></p>
+                        <div class="post-meta">
+
+                            <span>
+                                <%= post.category ? post.category.name:"بدون دسته" %>
+                            </span>
+
+                            <span>
+                                <%= post.createdAt.toLocaleDateString("fa-IR") %>
+                            </span>
+
+                        </div>
+                        <a href="/blog/<%= post._id %>">ادامه مطلب</a>
+                    </div>
+                </div>
+                <% }) %>
+
+
+        </div>
+
+        <div class="pagination">
+
+            <% if(page> 1){ %>
+
+                <a href="/blog?page=<%= page-1 %>">&laquo; قبلی</a>
+
+                <% } %>
+
+
+                    <% for(let i=1;i<=totalPages;i++){ %>
+
+                        <a href="/blog?page=<%= i %>" class="<%= page===i ? 'active' : '' %>">
+
+                            <%= i %>
+
+                        </a>
+
+                        <% } %>
+
+
+                            <% if(page < totalPages){ %>
+
+                                <a href="/blog?page=<%= page+1 %>">بعدی &raquo;</a>
+
+                                <% } %>
+
+        </div>
+    </div>
+</section>

@@ -1,35 +1,41 @@
 const express = require("express");
 const router = express.Router();
 
-const postController = require("../controllers/postController");
-const categoryController = require("../controllers/categoryController");
+const postController = require("../controllers/admin/postController");
+const categoryController = require("../controllers/admin/categoryController");
+const dashboardController=require("../controllers/admin/dashboardController");
+const upload=require("../middlewares/upload");
+const postValidation=require("../validations/postValidation");
+const isAuthenticated=require("../middlewares/isAuth");
 
-router.get("/", (req, res) => {
-    res.render("admin/dashboard");
-});
+router.get("/",isAuthenticated, dashboardController.index);
 
-router.get("/posts", postController.getAllPosts);
+router.get("/posts",isAuthenticated, postController.getAllPosts);
 
-router.get("/posts/create", postController.showCreateForm);
+router.get("/posts/create",isAuthenticated, postController.showCreateForm);
 
-router.post("/posts", postController.createPost);
+router.post("/posts",isAuthenticated,upload.single("image")
+,postValidation,postController.createPost);
 
-router.get("/posts/:id", postController.getSinglePost);
+router.get("/posts/:id",isAuthenticated, postController.getSinglePost);
 
-router.get("/posts/:id/edit", postController.showEditForm);
+router.get("/posts/:id/edit",isAuthenticated, postController.showEditForm);
 
-router.post("/posts/:id/edit", postController.updatePost);
+router.post("/posts/:id/edit",isAuthenticated,upload.single("image")
+, postController.updatePost);
 
-router.post("/posts/:id/delete", postController.deletePost);
-router.get("/categories", categoryController.index);
+router.post("/posts/:id/delete",isAuthenticated, postController.deletePost);
 
-router.get("/categories/create", categoryController.showCreateForm);
+router.get("/categories", isAuthenticated,categoryController.index);
 
-router.post("/categories", categoryController.createCategory);
+router.get("/categories/create",isAuthenticated, categoryController.showCreateForm);
 
-router.get("/categories/:id/edit", categoryController.showEditForm);
+router.post("/categories",isAuthenticated, categoryController.createCategory);
 
-router.post("/categories/:id/edit", categoryController.editCategory);
+router.get("/categories/:id/edit",isAuthenticated, categoryController.showEditForm);
 
-router.post("/categories/:id/delete", categoryController.deleteCategory);
+router.post("/categories/:id/edit",isAuthenticated, categoryController.editCategory);
+
+router.post("/categories/:id/delete",isAuthenticated, categoryController.deleteCategory);
+
 module.exports = router;

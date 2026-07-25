@@ -13,7 +13,11 @@ const postValidation=[
     .notEmpty()
     .withMessage("body is required")
     .isLength({min:10})
-    .withMessage("body must be at least 10 chars")
+    .withMessage("body must be at least 10 chars"),
+
+    body("category")
+    .notEmpty()
+    .withMessage("category is required")
 ];
 module.exports=postValidation;
 
