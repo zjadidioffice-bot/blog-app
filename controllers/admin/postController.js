@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const Post = require("../../models/Post");
 const Category = require("../../models/Category")
-const { validationResult, body } = require("express-validator");
+const { validationResult } = require("express-validator");
 const getAllPosts = async (req, res) => {
     try {
         const limit = 2;
@@ -41,6 +41,7 @@ const getAllPosts = async (req, res) => {
 const showCreateForm = async (req, res) => {
     const categories = await Category.find();
     res.render("admin/posts/create", {
+        layout:"layouts/admin",
         oldData: {},
         errors: [],
         categories
@@ -52,10 +53,12 @@ const createPost = async (req, res) => {
         const errors = validationResult(req);
         console.log(errors.array());
         if (!errors.isEmpty()) {
-            return res.render("create",
+            return res.render("admin/posts/create",
                 {
+                    layout:"layouts/admin",
                     errors: errors.array(),
-                    oldData: req.body
+                    oldData: req.body,
+                    categories
                 });
         }
         const { title, body, category } = req.body;
@@ -73,9 +76,11 @@ const getSinglePost = async (req, res) => {
         const post = await Post.findById(req.params.id)
             .populate("category");
         if (!post) {
-            return res.status(400).send("post not found");
+            return res.status(404).send("post not found");
         }
-        res.render("admin/posts/single", { post });
+        res.render("admin/posts/single", { 
+            layout:"layouts/admin",
+            post });
     } catch (error) {
         console.log(error);
         res.status(500).send("server error");
@@ -87,9 +92,11 @@ const showEditForm = async (req, res) => {
         const categories = await Category.find();
         const post = await Post.findById(req.params.id);
         if (!post) {
-            return res.status(400).send("post not found");
+            return res.status(404).send("post not found");
         }
-        res.render("admin/posts/edit", { post, categories });
+        res.render("admin/posts/edit", { 
+                        layout:"layouts/admin",
+            post, categories });
     } catch (error) {
         console.log(error);
         res.status(500).send("server error")
@@ -110,7 +117,7 @@ const updatePost = async (req, res) => {
 
                 const imagePath = path.join(
                     __dirname,
-                    "../public/uploads",
+                    "../../public/uploads",
                     post.image
                 );
 
@@ -128,7 +135,8 @@ const updatePost = async (req, res) => {
 
         }
         await post.save();
-res.redirect(`/admin/posts/${req.params.id}`);    } catch (error) {
+res.redirect(`/admin/posts/${req.params.id}`);  
+  } catch (error) {
         console.log(error);
         res.status(500).send("server error")
     }
@@ -143,7 +151,7 @@ const deletePost = async (req, res) => {
 
             const imagePath = path.join(
                 __dirname,
-                "../public/uploads",
+                "../../public/uploads",
                 post.image
             );
 
@@ -171,7 +179,12 @@ const getPostByCategory = async (req, res) => {
         const posts = await Post.find({
             category: categoryId
         }).populate("category");
-        res.render("admin/posts/index", { posts });
+        res.render("admin/posts/index", {
+            layout:"layouts/admin",
+            posts,
+            page: 1,
+    totalPages: 1,
+    search: "" });
     } catch (error) {
         console.log(error)
         res.status(500).send("server error")

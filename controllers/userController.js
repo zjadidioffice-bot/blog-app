@@ -1,7 +1,9 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt")
 const showLoginForm = (req, res) => {
-    res.render("auth/login");
+    res.render("auth/login",{
+        layout:"layouts/site"
+    });
 }
 const login = async (req, res) => {
     const { email, password } = req.body;

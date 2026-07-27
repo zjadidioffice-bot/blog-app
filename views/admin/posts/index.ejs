@@ -12,10 +12,10 @@
 
 <body>
     <h1>blog Posts</h1>
-    <a href="/posts/create" class="btn">
+    <a href="admin/posts/create" class="btn">
         create a new post
     </a>
-    <form action="/" method="get" class="search-form">
+    <form action="/admin/posts" method="get" class="search-form">
         <input type="text" name="search" value="<%= search||'' %>" placeholder="search posts">
         <button type="submit">search</button>
     </form>
@@ -26,7 +26,7 @@
             <% posts.forEach(post=> {%>
                 <div class="post">
                     <h2>
-                        <a href="/posts/<%= post._id %>">
+                        <a href="/admin/posts/<%= post._id %>">
                             <%= post.title %>
                         </a>
                     </h2>
@@ -40,7 +40,7 @@
                     <p>
                         category:
                         <% if(post.category){ %>
-                            <a href="/categories/<%= post.category._id %>/posts">
+                            <a href="/admin/categories/<%= post.category._id %>/posts">
                                 <%= post.category.name %>
 
                             </a>
@@ -59,7 +59,7 @@
 
                         <% if(page> 1){ %>
 
-                            <a href="/?search=<%= search %>&page=<%= page-1 %>">
+                            <a href="/admin/posts?search=<%= search %>&page=<%= page-1 %>">
                                 Previous
                             </a>
 
@@ -75,7 +75,7 @@
 
                                         <% }else{ %>
 
-                                            <a href="/?search=<%= search %>&page=<%= i %>">
+                                            <a href="/admin/posts?search=<%= search %>&page=<%= i %>">
 
                                                 <%= i %>
 
@@ -87,7 +87,7 @@
 
                                                     <% if(page<totalPages){ %>
 
-                                                        <a href="/?search=<%= search %>&page=<%= page+1 %>">
+                                                        <a href="/admin/posts?search=<%= search %>&page=<%= page+1 %>">
                                                             Next
                                                         </a>
 

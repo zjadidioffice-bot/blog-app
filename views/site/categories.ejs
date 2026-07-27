@@ -1,0 +1,17 @@
+<section class="categories-page">
+    <div class="container">
+        <h1>دسته بندی ها</h1>
+        <p class="categories-description">
+            همه دسته بندی های وبلاگ
+        </p>
+        <div class="categories-grid">
+            <% categories.forEach(category=>{ %>
+                <a href="/categories/<%= category._id %>" class="category-card">
+                    <h2>
+                        <%= category.name %>
+                    </h2>
+                </a>
+           <% }) %>
+        </div>
+    </div>
+</section>

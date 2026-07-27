@@ -5,7 +5,7 @@ const path=require("path");
 const connectDB=require("./config/db");
 const postRouter=require("./routes/postRoutes");
 const userRouter=require("./routes/userRouter");
-const categoryRouter=require("./routes/categoryRoutes")
+const siteCategoryRoutes=require("./routes/siteCategoryRoutes");
 const adminRoutes = require("./routes/admin");
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
@@ -27,9 +27,8 @@ app.use(session({
 app.use("/admin", adminRoutes);
 app.use(userRouter)
 app.use(postRouter);
-app.use(categoryRouter);
 app.use("/", siteRoutes);
-
+app.use(siteCategoryRoutes);
 
 const PORT=process.env.PORT || 3000;
 
