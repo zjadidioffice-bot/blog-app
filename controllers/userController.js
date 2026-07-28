@@ -19,7 +19,7 @@ const login = async (req, res) => {
         id:user._id,
         username:user.username
     };
-    res.redirect("/");
+    res.redirect("/admin");
     res.send("login successfully");
 }
 const logout=(req,res)=>{

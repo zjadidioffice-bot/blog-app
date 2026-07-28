@@ -35,15 +35,15 @@
                     <%= post.createdAt.toDateString() %>
                 </p>
                 <div class="actions">
-                    <a href="/posts/<%= post._id %>/edit" class="btn1 edit-btn">edit post</a>
+                    <a href="/admin/posts/<%= post._id %>/edit" class="btn1 edit-btn">edit post</a>
                     
-                    <form action="/posts/<%= post._id %>/delete" method="post" class="delete-form">
+                    <form action="/admin/posts/<%= post._id %>/delete" method="post" class="delete-form">
                         <button type="submit" class="btn1 delete-btn">
                             delete
                         </button>
                     </form>
                     
-                    <a href="/" class="btn1 back-btn">back</a>
+                    <a href="/admin/posts" class="btn1 back-btn">back</a>
 
                 </div>
 

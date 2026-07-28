@@ -52,6 +52,7 @@ const createPost = async (req, res) => {
     try {
         const errors = validationResult(req);
         console.log(errors.array());
+        const categories = await Category.find();
         if (!errors.isEmpty()) {
             return res.render("admin/posts/create",
                 {

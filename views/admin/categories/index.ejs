@@ -11,7 +11,7 @@
 <body>
     <h1>categories</h1>
 
-    <a href="/categories/create" class="btn">add category</a>
+    <a href="/admin/categories/create" class="btn">add category</a>
     <% if(categories.length===0) {%>
         <p>no categories found</p>
         <% }else{ %>
@@ -20,8 +20,8 @@
                     <%= category.name %>
                 </h1>
                 <div class="actions">
-                <a href="categories/<%= category._id %>/edit" class="edit-btn btn1">edit</a>
-                <form action="categories/<%= category._id %>/delete" method="post" class="delete-form">
+                <a href="/admin/categories/<%= category._id %>/edit" class="edit-btn btn1">edit</a>
+                <form action="/admin/categories/<%= category._id %>/delete" method="post" class="delete-form">
                     <button type="submit" class="delete-btn btn1">delete</button>
 
                 </form>

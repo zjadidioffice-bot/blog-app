@@ -10,7 +10,7 @@
 
 <body>
     <h1>edit post</h1>
-    <form action="/posts/<%= post._id %>/edit" method="post" enctype="multipart/form-data" class="form-container">
+    <form action="/admin/posts/<%= post._id %>/edit" method="post" enctype="multipart/form-data" class="form-container">
         <div class="form-group">
             <label>title</label>
             <input type="text" name="title" value="<%= post.title %>" required>
