@@ -7,6 +7,7 @@ const postRouter=require("./routes/postRoutes");
 const userRouter=require("./routes/userRouter");
 const siteCategoryRoutes=require("./routes/siteCategoryRoutes");
 const adminRoutes = require("./routes/admin");
+const commentRoutes=require("./routes/commentRoutes")
 const session = require("express-session");
 const expressLayouts = require("express-ejs-layouts");
 const siteRoutes = require("./routes/site");
@@ -29,7 +30,7 @@ app.use(userRouter)
 app.use(postRouter);
 app.use("/", siteRoutes);
 app.use(siteCategoryRoutes);
-
+app.use(commentRoutes);
 const PORT=process.env.PORT || 3000;
 
 app.listen(PORT,()=>{

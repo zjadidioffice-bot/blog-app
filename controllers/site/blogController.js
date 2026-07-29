@@ -1,4 +1,5 @@
 const Post=require("../../models/Post");
+const Comment = require("../../models/Comment");
 const index = async (req, res) => {
     try {
         const limit = 2;
@@ -40,12 +41,21 @@ const single = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
             .populate("category");
+        
+        const comments=await Comment.find({
+            post:post._id,
+           // isApproved:true,
+            parent:null
+        })
+        .sort({createdAt:-1});
+
         if (!post) {
             return res.status(404).send("post not found");
         }
         res.render("site/single", {
             layout:"layouts/site",
-             post });
+             post,
+            comments });
     } catch (error) {
         console.log(error);
         res.status(500).send("server error");

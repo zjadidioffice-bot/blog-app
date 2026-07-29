@@ -1,0 +1,93 @@
+<h1>مدیریت دیدگاه‌ها</h1>
+
+<table border="1" cellpadding="10">
+
+    <thead>
+        <tr>
+            <th>نویسنده</th>
+            <th>پست</th>
+            <th>متن</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    <% comments.forEach(comment => { %>
+
+        <tr>
+
+            <td>
+                <%= comment.name %>
+            </td>
+
+            <td>
+                <%= comment.post?.title %>
+            </td>
+
+            <td>
+                <%= comment.body %>
+            </td>
+
+            <td>
+
+                <% if(comment.isApproved){ %>
+
+                    <span style="color:green;">
+                        ✅ تایید شده
+                    </span>
+
+                <% }else{ %>
+
+                    <span style="color:red;">
+                        در انتظار تایید
+                    </span>
+
+                <% } %>
+
+            </td>
+
+            <td>
+
+                <% if(!comment.isApproved){ %>
+
+                    <form
+                        action="/admin/comments/<%= comment._id %>/approve"
+                        method="POST"
+                        style="display:inline;"
+                    >
+
+                        <button type="submit">
+                            تایید
+                        </button>
+
+                    </form>
+
+                <% } %>
+
+
+                <form
+                    action="/admin/comments/<%= comment._id %>/delete"
+                    method="POST"
+                    style="display:inline;"
+                >
+
+                    <button
+                        type="submit"
+                        onclick="return confirm('حذف شود؟')"
+                    >
+                        حذف
+                    </button>
+
+                </form>
+
+            </td>
+
+        </tr>
+
+    <% }) %>
+
+    </tbody>
+
+</table>

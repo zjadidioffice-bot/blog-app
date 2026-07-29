@@ -7,6 +7,7 @@ const dashboardController=require("../controllers/admin/dashboardController");
 const upload=require("../middlewares/upload");
 const postValidation=require("../validations/postValidation");
 const isAuthenticated=require("../middlewares/isAuth");
+const commentController=require("../controllers/admin/commentController");
 
 router.get("/",isAuthenticated, dashboardController.index);
 
@@ -38,4 +39,16 @@ router.post("/categories/:id/edit",isAuthenticated, categoryController.editCateg
 
 router.post("/categories/:id/delete",isAuthenticated, categoryController.deleteCategory);
 
+router.get("/comments",
+    isAuthenticated,commentController.index);
+
+router.post("/comments/:id/approve",
+    isAuthenticated,
+    commentController.approve
+);
+
+router.post("/comments/:id/delete",
+    isAuthenticated,
+    commentController.remove
+);
 module.exports = router;

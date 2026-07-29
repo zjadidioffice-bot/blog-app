@@ -1,14 +1,3 @@
-<html lang="en">
-
-<head>
-        <link rel="stylesheet" href="/css/post.css">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create post</title>
-</head>
-
-<body>
     <h1>create a new post</h1>
     <form action="/admin/posts" method="post" enctype="multipart/form-data" class="form-container">
         <div>
@@ -26,7 +15,7 @@
                         <div class="form-group">
                             <label>body</label>
                             <br>
-                            <textarea name="body" required>
+                            <textarea name="body" id="editor"required>
                             <%= oldData?.body ||'' %>
                             </textarea>
                         </div>
@@ -47,6 +36,7 @@
                                         <select name="category">
                                             <% categories.forEach(category=>{ %>
                                                 <option value="<%= category._id %>">
+                                                        <%= oldData?.category == category._id.toString() ? "selected" : "" %>>
                                                     <%= category.name %>
                                                 </option>
                                                 <% }) %>
@@ -58,7 +48,7 @@
         <button type="submit" class="submit-btn">save</button>
     </form>
     <br>
-    <a href="/">back</a>
-</body>
+    <a href="/admin/posts">back</a>
 
-</html>
+
+
