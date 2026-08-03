@@ -50,7 +50,6 @@
 
             <td>
 
-                <% if(!comment.isApproved){ %>
 
                     <form
                         action="/admin/comments/<%= comment._id %>/approve"
@@ -63,8 +62,8 @@
                         </button>
 
                     </form>
+                    <a href="/admin/comments/<%= comment._id %>/reply">پاسخ</a>
 
-                <% } %>
 
 
                 <form

@@ -1,0 +1,26 @@
+<h1>پاسخ به دیدگاه</h1>
+<div>
+    <h3>نظر کاربر</h3>
+<p>
+    <strong>
+        <%= comment.name %>
+    </strong>
+</p>
+<p>
+    <%= comment.body %>
+</p>
+</div>
+<hr>
+<form action="/admin/comments/<%= comment._id %>/reply"
+ method="post">
+
+<textarea
+name="body"
+rows="6"
+required
+></textarea>
+
+<br><br>
+
+<button type="submit">ثبت پاسخ</button>
+</form>

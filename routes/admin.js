@@ -51,4 +51,15 @@ router.post("/comments/:id/delete",
     isAuthenticated,
     commentController.remove
 );
+
+router.get("/comments/:id/reply",
+    isAuthenticated,
+    commentController.showReplyForm
+);
+
+router.post("/comments/:id/reply",
+    isAuthenticated,
+    commentController.reply
+);
+
 module.exports = router;

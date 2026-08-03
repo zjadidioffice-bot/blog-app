@@ -40,8 +40,46 @@ const remove=async(req,res)=>{
     }
 };
 
+const showReplyForm=async(req,res)=>{
+    try {
+        const comment=await Comment.findById(req.params.id)
+        .populate("post");
+
+        if(!comment){
+            return res.status(404).send("comment not found");
+        }
+
+        res.render("admin/comments/reply",{
+            layout:"layouts/admin",
+            comment
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("server error");
+    }
+};
+
+const reply=async(req,res)=>{
+    try {
+        const parentComment=await Comment.findById(req.params.id);
+        await Comment.create({
+            name:"مدیرسایت",
+            email:"admin@blog.com",
+            body:req.body.body,
+            post:parentComment.post,
+            parent:parentComment._id,
+            isApproved:true
+        });
+        res.redirect("/admin/comments");
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("server error");
+    }
+}
 module.exports={
     index,
     approve,
-    remove
+    remove,
+    showReplyForm,
+    reply
 }

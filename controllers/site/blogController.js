@@ -47,6 +47,9 @@ const single = async (req, res) => {
            // isApproved:true,
             parent:null
         })
+        .populate({
+            path:"replies"
+        })
         .sort({createdAt:-1});
 
         if (!post) {
