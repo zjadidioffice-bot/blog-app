@@ -1,6 +1,8 @@
-<h1>مدیریت دیدگاه‌ها</h1>
+<h1 class="page-title">مدیریت دیدگاه‌ها</h1>
 
-<table border="1" cellpadding="10">
+<div class="table-container">
+
+<table class="admin-table" border="1" cellpadding="10">
 
     <thead>
         <tr>
@@ -26,7 +28,7 @@
                 <%= comment.post?.title %>
             </td>
 
-            <td>
+            <td class="comment-text">
                 <%= comment.body %>
             </td>
 
@@ -34,13 +36,13 @@
 
                 <% if(comment.isApproved){ %>
 
-                    <span style="color:green;">
+                    <span class="status approved">
                         ✅ تایید شده
                     </span>
 
                 <% }else{ %>
 
-                    <span style="color:red;">
+                    <span class="status pending">
                         در انتظار تایید
                     </span>
 
@@ -48,21 +50,24 @@
 
             </td>
 
-            <td>
+            <td class="actions">
 
-
+                <% if (!comment.isApproved){%>
                     <form
                         action="/admin/comments/<%= comment._id %>/approve"
                         method="POST"
                         style="display:inline;"
                     >
 
-                        <button type="submit">
+                        <button class="btn approved-btn" type="submit">
                             تایید
                         </button>
 
-                    </form>
-                    <a href="/admin/comments/<%= comment._id %>/reply">پاسخ</a>
+                    </form
+                    <% } %>
+
+                    <a class="btn reply-btn" href="/admin/comments/<%= comment._id %>/reply">
+                        پاسخ</a>
 
 
 
@@ -73,6 +78,7 @@
                 >
 
                     <button
+                    class="btn delete-btn"
                         type="submit"
                         onclick="return confirm('حذف شود؟')"
                     >
@@ -90,3 +96,5 @@
     </tbody>
 
 </table>
+
+</div>

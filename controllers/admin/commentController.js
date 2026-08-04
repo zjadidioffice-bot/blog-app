@@ -2,7 +2,9 @@ const Comment=require("../../models/Comment");
 
 const index=async(req,res)=>{
     try {
-        const comments=await Comment.find()
+        const comments=await Comment.find({
+            parent:null
+        })
         .populate("post")
         .sort({createdAt:-1});
 

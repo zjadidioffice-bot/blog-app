@@ -22,6 +22,51 @@
         </div>
     </div>
 </section>
+<section class="comments-list">
+    <div class="container">
+        <div class="comment-title">
+            <h2>دیدگاه ها</h2>
+        </div>
+        <% if(comments.length===0){ %>
+            <p class="no-comments">
+                هنوز دیدگاهی ثبت نشده است
+            </p>
+            <% } %>
+                <% comments.forEach(comment=>{%>
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <span class="comment-author">
+                              👤  <%= comment.name %>
+                            </span>
+                            <span class="comment-date">
+                                <%= comment.createdAt.toLocaleDateString("fa-IR") %>
+                            </span>
+                        </div>
+                        <div class="comment-body">
+                            <%= comment.body %>
+                        </div>
+                        
+                        
+                        <% if(comment.replies.length>0){ %>
+                            <div class="comment-replies">
+                                <% comment.replies.forEach(reply=>{%>
+                                    <div class="reply">
+                                        <div class="reply-header">
+                                       🛡️ مدیر سایت
+                                        </div>
+                                        <div class="reply-body">
+                                            <%= reply.body %>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                            <% } %>
+                    </div>
+
+                    <% }) %>
+    </div>
+</section>
+
 <section class="comments-section">
     <div class="container">
         <h2>ثبت دیدگاه</h2>
@@ -40,27 +85,5 @@
             </div>
             <button type="submit">ثبت دیدگاه</button>
         </form>
-    </div>
-</section>
-<section class="comments-list">
-    <div class="container">
-        <h2>دیدگاه ها</h2>
-        <% if(comments.length===0){ %>
-            <p>هنوز دیدگاهی ثبت نشده است</p>
-            <% } %>
-                <% comments.forEach(comment=>{%>
-                    <div class="comment-item">
-                        <h4>
-                            <%= comment.name %>
-                        </h4>
-                        <small>
-                            <%= comment.createdAt.toLocaleDateString("fa-IR") %>
-                        </small>
-                        <p>
-                            <%= comment.body %>
-                        </p>
-                    </div>
-                
-                    <% }) %>
     </div>
 </section>

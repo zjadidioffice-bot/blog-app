@@ -1,16 +1,20 @@
-<h1>پاسخ به دیدگاه</h1>
-<div>
+<div class="reply-page">
+<h1 class="page-title">پاسخ به دیدگاه</h1>
+</div>
+<div class="original-comment">
     <h3>نظر کاربر</h3>
-<p>
+<div class="commnet-user">
     <strong>
         <%= comment.name %>
     </strong>
-</p>
-<p>
+</div>
+<p class="comment-content">
     <%= comment.body %>
 </p>
 </div>
-<hr>
+
+<div class="reply-box">
+<h3>پاسخ مدیر</h3>
 <form action="/admin/comments/<%= comment._id %>/reply"
  method="post">
 
@@ -20,7 +24,7 @@ rows="6"
 required
 ></textarea>
 
-<br><br>
 
-<button type="submit">ثبت پاسخ</button>
+<button type="submit" class="reply-submit-btn">ثبت پاسخ</button>
 </form>
+</div>

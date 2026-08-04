@@ -20,7 +20,6 @@ const login = async (req, res) => {
         username:user.username
     };
     res.redirect("/admin");
-    res.send("login successfully");
 }
 const logout=(req,res)=>{
     req.session.destroy(()=>{

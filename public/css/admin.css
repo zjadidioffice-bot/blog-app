@@ -71,3 +71,271 @@ body{
     border-bottom:1px solid #ddd;
 
 }
+
+.page-title{
+    margin-bottom:30px;
+    font-size:28px;
+}
+
+
+/* جدول */
+
+.table-container{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+
+.admin-table th{
+    background:#f5f5f5;
+    padding:15px;
+    text-align:right;
+    font-weight:bold;
+}
+
+
+.admin-table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+    vertical-align:middle;
+}
+
+
+.admin-table tr:hover{
+    background:#fafafa;
+}
+
+
+.comment-text{
+    max-width:300px;
+    line-height:1.8;
+}
+
+
+/* وضعیت */
+
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+
+.approved{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+
+.pending{
+    background:#fff3e0;
+    color:#ef6c00;
+}
+
+
+/* دکمه ها */
+
+.actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+
+.btn{
+    border:none;
+    padding:8px 14px;
+    border-radius:7px;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:14px;
+}
+
+
+.approve-btn{
+    background:#4caf50;
+    color:white;
+}
+
+
+.reply-btn{
+    background:#2196f3;
+    color:white;
+}
+
+
+.delete-btn{
+    background:#f44336;
+    color:white;
+}
+
+
+.reply-page{
+    max-width:900px;
+}
+
+
+/* عنوان صفحه */
+
+.page-title{
+    margin-bottom:30px;
+}
+
+
+
+/* کامنت اصلی */
+
+.original-comment{
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    margin-bottom:30px;
+
+    border-right:4px solid #2196f3;
+
+}
+
+
+.original-comment h3{
+
+    margin-bottom:15px;
+
+    color:#333;
+
+}
+
+
+.comment-user{
+
+    font-size:16px;
+
+    margin-bottom:15px;
+
+    color:#444;
+
+}
+
+
+.comment-content{
+
+    line-height:2;
+
+    color:#555;
+
+    background:#f8f8f8;
+
+    padding:15px;
+
+    border-radius:8px;
+
+}
+
+
+
+/* فرم پاسخ */
+
+.reply-box{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:12px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+
+
+.reply-box h3{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.reply-box textarea{
+
+    width:100%;
+
+    min-height:160px;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    resize:vertical;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+}
+
+
+
+.reply-box textarea:focus{
+
+    outline:none;
+
+    border-color:#2196f3;
+
+}
+
+
+
+.reply-submit-btn{
+
+    margin-top:20px;
+
+    background:#2196f3;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 30px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+
+.reply-submit-btn:hover{
+
+    background:#1976d2;
+
+}
+
+#editor {
+    direction: rtl;
+    text-align: right;
+}
+
+.ql-editor {
+    direction: rtl;
+    text-align: right;
+}

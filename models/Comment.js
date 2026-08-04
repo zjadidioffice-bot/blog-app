@@ -1,5 +1,3 @@
-const { name } = require("ejs");
-const { body } = require("express-validator");
 const mongoose=require("mongoose");
 
 const commentSchema=new mongoose.Schema(
@@ -39,5 +37,15 @@ const commentSchema=new mongoose.Schema(
         timestamps:true
     }
 );
-
+commentSchema.virtual("replies",{
+    ref:"Comment",
+    localField:"_id",
+    foreignField:"parent"
+});
+commentSchema.set("toObject",{
+    virtuals:true
+});
+commentSchema.set("toJSON",{
+    virtuals:true
+});
 module.exports=mongoose.model("Comment",commentSchema);

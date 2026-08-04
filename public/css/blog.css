@@ -257,3 +257,21 @@
     margin-bottom:10px;
 
 }
+
+.comment-replies{
+    margin-top:15px;
+    margin-right:40px;
+    border-right:3px solid #4CAF50;
+    padding-right:15px;
+}
+
+.reply{
+    background:#f7f7f7;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.reply strong{
+    color:#2e7d32;
+}

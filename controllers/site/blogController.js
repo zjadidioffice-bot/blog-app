@@ -47,10 +47,9 @@ const single = async (req, res) => {
            // isApproved:true,
             parent:null
         })
-        .populate({
-            path:"replies"
-        })
+        .populate("replies")
         .sort({createdAt:-1});
+        console.log(comments[0])
 
         if (!post) {
             return res.status(404).send("post not found");

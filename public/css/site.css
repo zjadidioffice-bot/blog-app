@@ -641,3 +641,153 @@ body {
     color:#444;
 
 }
+
+
+.comment-replies{
+    margin-top:15px;
+    margin-right:40px;
+    border-right:3px solid #4CAF50;
+    padding-right:15px;
+}
+
+.reply{
+    background:#f7f7f7;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+.reply strong{
+    color:#2e7d32;
+}
+/* =========================
+   Comments Section
+========================= */
+
+.comments-section{
+    margin-top:60px;
+    margin-bottom:60px;
+}
+
+.comments-section h2{
+    margin-bottom:25px;
+    font-size:28px;
+    color:#333;
+}
+
+.comment-form{
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:20px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-weight:600;
+    color:#444;
+}
+
+.form-group input,
+.form-group textarea{
+    width:100%;
+    padding:12px 15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    transition:.3s;
+    font-family:inherit;
+}
+
+.form-group textarea{
+    resize:vertical;
+    min-height:140px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    outline:none;
+    border-color:#2f80ed;
+    box-shadow:0 0 0 3px rgba(47,128,237,.15);
+}
+
+.comment-form button{
+    background:#2f80ed;
+    color:#fff;
+    border:none;
+    padding:12px 30px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.comment-form button:hover{
+    background:#1d6fd8;
+}
+.comments-section{
+    margin:60px 0;
+}
+
+.comments-title{
+    margin-bottom:25px;
+}
+
+.comment-item{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.comment-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.comment-author{
+    font-weight:bold;
+    color:#333;
+}
+
+.comment-date{
+    color:#888;
+    font-size:14px;
+}
+
+.comment-body{
+    line-height:2;
+    color:#555;
+}
+
+.comment-replies{
+    margin-top:20px;
+    padding-right:25px;
+    border-right:4px solid #2f80ed;
+}
+
+.reply{
+    background:#f8faff;
+    padding:15px;
+    border-radius:10px;
+    margin-top:12px;
+}
+
+.reply-header{
+    font-weight:bold;
+    color:#2f80ed;
+    margin-bottom:8px;
+}
+
+.reply-body{
+    line-height:2;
+}
