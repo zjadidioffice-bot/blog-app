@@ -15,10 +15,19 @@
             <label>title</label>
             <input type="text" name="title" value="<%= post.title %>" required>
         </div>
-
+        <div class="form-group">
+            <label>expert</label>
+            <textarea
+            name="expert"
+            rows="4"
+            required
+            >
+        <%= post.expert || "" %>
+        </textarea>
+        </div>
         <div class="form-group">
             <label>body</label>
-            <textarea name="body" rows="8" cols="50" required><%= post.body %></textarea>
+            <textarea name="body" rows="8" cols="50" required><%- post.body %></textarea>
         </div>
         <div class="form-group">
             <% if(post.image){ %>

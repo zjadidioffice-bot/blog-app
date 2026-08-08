@@ -35,7 +35,7 @@
                         src="/uploads/<%= post.image %>">
                         <% } %>
                     <p>
-                        <%- post.body %>
+                        <%= post.expert?.substring(0,120)%>... %>
                     </p>
                     <p>
                         category:

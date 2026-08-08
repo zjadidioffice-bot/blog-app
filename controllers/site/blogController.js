@@ -44,7 +44,7 @@ const single = async (req, res) => {
         
         const comments=await Comment.find({
             post:post._id,
-           // isApproved:true,
+           isApproved:true,
             parent:null
         })
         .populate("replies")

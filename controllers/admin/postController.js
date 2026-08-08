@@ -106,12 +106,13 @@ const showEditForm = async (req, res) => {
 }
 const updatePost = async (req, res) => {
     try {
-        const { title, body, category } = req.body;
+        const { title,expert, body, category } = req.body;
 
         const post = await Post.findById(req.params.id);
         post.title = title;
         post.body = body;
         post.category = category;
+        post.expert=expert;
 
         if (req.file) {
 
