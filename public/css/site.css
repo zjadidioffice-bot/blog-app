@@ -791,3 +791,9 @@ body {
 .reply-body{
     line-height:2;
 }
+.single-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+}

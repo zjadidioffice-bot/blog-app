@@ -5,6 +5,11 @@ const postSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
+    expert:{
+        type:String,
+        required:false,
+        trim:true
+    },
     body:{
         type:String,
         required:true,

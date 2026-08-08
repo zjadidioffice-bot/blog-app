@@ -12,6 +12,14 @@
                     <%= titleError.msg %>
                 </p>
                 <% } %>
+                <div class="form-group">
+                    <label>expert</label>
+                    <textarea
+                    name="expert"
+                    rows="4"
+                    required
+                    ><%= oldData?.expert || "" %></textarea>
+                </div>
                     <div class="form-group">
                         <label>body</label>
                         <br>
@@ -59,24 +67,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!editor) return;
 
-const quill = new Quill("#editor", {
-    theme: "snow",
-    modules: {
-        toolbar: [
-            [{ direction: "rtl" }],
-            [{ align: [] }],
-            ["bold", "italic", "underline"],
-            [{ header: [1, 2, 3, false] }],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link"],
-            ["clean"]
-        ]
-    }
-});
-    const form = document.querySelector("form");
+    const quill = new Quill("#editor", {
+        theme: "snow",
+        modules: {
+            toolbar: [
+                ["bold", "italic", "underline"],
+                [{ header: [1, 2, 3, false] }],
+                [{ list: "ordered" }, { list: "bullet" }],
+                [{ align: [] }],
+                ["link", "image"],
+                ["clean"]
+            ]
+        }
+    });
 
-    form.addEventListener("submit", function () {
-        document.getElementById("body").value = quill.root.innerHTML;
+
+    const toolbar = quill.getModule("toolbar");
+
+
+    toolbar.addHandler("image", function () {
+
+        const input = document.createElement("input");
+
+        input.setAttribute("type", "file");
+        input.setAttribute("accept", "image/*");
+
+        input.click();
+
+
+        input.onchange = async function () {
+
+            const file = input.files[0];
+
+            if (!file) return;
+
+
+            const formData = new FormData();
+
+            formData.append("image", file);
+
+
+            const response = await fetch("/admin/editor-image", {
+                method: "POST",
+                body: formData
+            });
+
+
+            const data = await response.json();
+
+
+            const range = quill.getSelection();
+
+            quill.insertEmbed(
+                range.index,
+                "image",
+                data.url
+            );
+
+        };
+
+    });
+
+
+    document.querySelector("form").addEventListener("submit", function () {
+
+        document.querySelector("#body").value =
+            quill.root.innerHTML;
+
     });
 
 });

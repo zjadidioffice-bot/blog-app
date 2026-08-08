@@ -8,7 +8,6 @@ const upload=require("../middlewares/upload");
 const postValidation=require("../validations/postValidation");
 const isAuthenticated=require("../middlewares/isAuth");
 const commentController=require("../controllers/admin/commentController");
-
 router.get("/",isAuthenticated, dashboardController.index);
 
 router.get("/posts",isAuthenticated, postController.getAllPosts);
@@ -61,5 +60,16 @@ router.post("/comments/:id/reply",
     isAuthenticated,
     commentController.reply
 );
+
+router.post(
+    "/editor-image",
+    upload.single("image"),
+    (req, res) => {
+        res.json({
+            url: "/uploads/" + req.file.filename
+        });
+    }
+);
+
 
 module.exports = router;

@@ -63,9 +63,9 @@ const createPost = async (req, res) => {
                     categories
                 });
         }
-        const { title, body, category } = req.body;
+        const { title,expert, body, category } = req.body;
         const image = req.file ? req.file.filename : null;
-        await Post.create({ title, body, category, image });
+        await Post.create({ title,expert, body, category, image:req.file ? req.file.filename:null });
         res.redirect("/admin/posts");
     } catch (error) {
         console.log(error);

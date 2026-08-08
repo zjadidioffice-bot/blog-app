@@ -239,12 +239,6 @@ h1 {
     background: #6c757d;
 }
 
-.post-body {
-    line-height: 1.8;
-    font-size: 17px;
-    color: #444;
-    margin: 25px 0;
-}
 
 .post-image {
     width: 100%;
@@ -379,4 +373,16 @@ body h1{
 
     margin-bottom:20px;
 
+}
+.post-body {
+    width: 100%;
+    max-width: 900px;
+    line-height: 1.8;
+}
+
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
 }
